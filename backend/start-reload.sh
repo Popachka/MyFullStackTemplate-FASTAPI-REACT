@@ -2,6 +2,7 @@
 set -e
 
 # Применение миграций при запуске контейнера
+alembic upgrade head
 
 # Запуск инициализации данных
 python /app/app/initial_data.py
