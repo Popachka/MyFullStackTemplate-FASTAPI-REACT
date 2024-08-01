@@ -107,16 +107,25 @@ docker compose exec backend bash /app/tests-start.sh -x
 $ docker compose exec backend bash
 ```
 
-* Alembic is already configured to import your SQLModel models from `./backend/app/models/`.
+* Alembic импортирует ваши SQLModel-и из `./backend/app/models/`.
 
 * После изменения модели (например, добавления столбца), внутри контейнера создайте ревизию, например:
 ```console
 $ alembic revision --autogenerate -m "Add column last_name to User model"
 ```
+или
+```console
+$ create_migrate "Add column last_name to User model"
+```
 * После создания ревизии выполните миграцию в базе данных (это фактически изменит базу данных):
 
 ```console
 $ alembic upgrade head
+```
+
+или
+```console
+$ migrate
 ```
 
 Если вы хотите начать с модификации или удаления моделей по умолчанию, без предыдущих ревизий, вы можете удалить файлы ревизий (.py файлы) в ./backend/app/alembic/versions/. Затем создайте первую миграцию, как описано выше.

@@ -17,7 +17,9 @@ COPY ./scripts/ /app/
 COPY ./tests-start.sh /app/
 COPY ./start-reload.sh /
 COPY ./clear_bd.sh /app/
-# Установить права на выполнение для start-reload.sh
-RUN chmod +x /start-reload.sh
+COPY ./create_migrate.sh /app/  
+COPY ./migrate.sh /app/  
 
-# Создание начальной миграции на этапе сборки (один раз)
+
+# Установить права на выполнение для скриптов
+RUN chmod +x /start-reload.sh

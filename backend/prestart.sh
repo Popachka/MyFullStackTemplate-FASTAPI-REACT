@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-RUN alembic revision --autogenerate -m "Initial migration"
+alembic revision --autogenerate -m "Initial migration"
 
 alembic upgrade head
 
